@@ -16,7 +16,6 @@ SERVER = os.getenv('DISCORD_SERVER')
 GUILD_ID = int(os.getenv('GUILD_TOKEN'))
 CHANNEL_ID = int(os.getenv('CHANNEL_TOKEN'))
 
-print(type(CHANNEL_ID))
 
 intents=discord.Intents.default()
 intents.members = True
@@ -54,8 +53,8 @@ async def on_ready():
 #On member event, welcomes anyone who joins the server
 @client.event 
 async def on_member_join(member):
-    guild = client.get_guild(1103430473633513658)
-    channel = guild.get_channel(1103430474338152545)
+    guild = client.get_guild(GUILD_ID)
+    channel = guild.get_channel(CHANNEL_ID)
     await channel.send(f'Welcome to the server {member.mention}!  ')
     await member.create_dm()
     await member.send(
